@@ -6,6 +6,11 @@
     public enum ESaleStatus
     {
         /// <summary>
+        /// The sale has been created successfully.
+        /// </summary>
+        Created, 
+
+        /// <summary>
         /// The sale is pending and has not yet been completed.
         /// </summary>
         Pending,

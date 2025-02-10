@@ -1,4 +1,5 @@
-﻿using Ambev.DeveloperEvaluation.Domain.Entities;
+﻿using Ambev.DeveloperEvaluation.Application.Sales.Events;
+using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
 using Ambev.DeveloperEvaluation.ORM.EventBus;
 using MediatR;
@@ -42,7 +43,7 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
             await _saleRepository.CreateAsync(sale, cancellationToken);
 
             // Add event to created sale
-            var saleCreatedEvent = new SaleCreatedEvent(sale.Id, sale.CustomerId, sale.TotalPrice, sale.CreatedAt);
+            var saleCreatedEvent = new SaleCreatedEvent(sale.Id, sale.CustomerId, sale.Branch, sale.TotalPrice, sale.CreatedAt);
             await _eventPublisher.PublishAsync(saleCreatedEvent);
 
             return new CreateSaleResult(sale);
