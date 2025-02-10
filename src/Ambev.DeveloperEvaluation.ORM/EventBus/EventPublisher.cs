@@ -9,16 +9,18 @@
     {
         public async Task PublishAsync<T>(T eventMessage) where T : IEvent
         {
-            // Aqui você pode adicionar a lógica para publicar eventos para uma fila de mensagens (RabbitMQ, Kafka, etc.)
-            // Para simplicidade, estamos apenas simulando com um log.
+            // Event publishing logic (e.g., send to a queue or message broker)
+            // Here you could use a library like RabbitMQ, Kafka, etc.
 
+            // Log the event publication with the timestamp
             Console.WriteLine($"Event Published: {eventMessage.GetType().Name} at {DateTime.UtcNow}");
+            await Task.CompletedTask;
 
-            // Simulação de envio de evento assíncrono
-            await Task.Delay(100); // Simulando o atraso de comunicação com a fila
+            // Simulating asynchronous event publishing (e.g., sending to a message queue)
+            await Task.Delay(100); // Simulating the delay for communication with the message queue
 
-            // Dependendo da tecnologia, você pode usar APIs específicas de mensageria para enviar eventos.
-            // Exemplo:
+            // Depending on the technology, you can use specific messaging APIs to send events.
+            // Example:
             // _messageQueue.SendMessage(eventMessage);
         }
     }
