@@ -9,11 +9,17 @@
     {
         public async Task PublishAsync<T>(T eventMessage) where T : IEvent
         {
-            // Lógica de publicação de evento (por exemplo, enviar para uma fila ou mensagem)
-            // Aqui você poderia usar uma biblioteca como RabbitMQ, Kafka, etc.
+            // Aqui você pode adicionar a lógica para publicar eventos para uma fila de mensagens (RabbitMQ, Kafka, etc.)
+            // Para simplicidade, estamos apenas simulando com um log.
 
-            Console.WriteLine($"Event Published: {eventMessage.GetType().Name}");
-            await Task.CompletedTask;
+            Console.WriteLine($"Event Published: {eventMessage.GetType().Name} at {DateTime.UtcNow}");
+
+            // Simulação de envio de evento assíncrono
+            await Task.Delay(100); // Simulando o atraso de comunicação com a fila
+
+            // Dependendo da tecnologia, você pode usar APIs específicas de mensageria para enviar eventos.
+            // Exemplo:
+            // _messageQueue.SendMessage(eventMessage);
         }
     }
 }
